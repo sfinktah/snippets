@@ -1,0 +1,13 @@
+snippet fun "function!" b
+function! s:${1:MyFunction}()
+	$2
+endfunction
+com! $1 call s:$1()
+
+$0
+endsnippet
+
+snippet test "tab test" w
+" ${1:1} ${2:2} ${3:3}
+" $1 $2 $3
+endsnippet
