@@ -20,3 +20,27 @@ snip.rv += match.group(3)
 `
 endsnippet
 
+snippet /(?<=[^\w])for (\$\w+) in ([^:]+):/ "python for" rA
+foreach (`!p snip.rv = match.group(2)` as `!p snip.rv = match.group(1)`) {
+	$1
+}
+$0
+endsnippet 
+
+snippet /(?<=[^\w])for (\$\w+), (\$\w+) in ([^:]+):/ "python for tuple" rA
+foreach (`!p snip.rv = match.group(3)` as `!p snip.rv = match.group(1)` => `!p snip.rv = match.group(2)`) {
+	$1
+}
+$0
+endsnippet 
+
+# Python-like .format
+snippet /(?<=[[{(=, ])("[^{"]*{[^}]*}[^"]*")\.f$/ "auto .format 1" rA
+format(`!p snip.rv = match.group(1)`, $2)$0
+endsnippet
+
+snippet /(?<=[[{(=, ])('[^{']*{[^}]*}[^']*')$/ "auto .format 2" rA
+format(`!p snip.rv = match.group(1)`, $2)$0
+endsnippet
+
+
